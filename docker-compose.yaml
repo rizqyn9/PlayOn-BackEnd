@@ -1,0 +1,11 @@
+version : "3.9"
+services : 
+  nginx:
+    image: nginx
+  redis : 
+      image: redis:alpine
+      ports: 
+        - 6379:6379
+      deploy:
+        replicas : 1
+  
