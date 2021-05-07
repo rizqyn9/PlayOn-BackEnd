@@ -1,6 +1,5 @@
 module.exports = {
-    GeneratedRoomID: () => {
-        let array = ["1","2","3","4"]
-        return array[Math.floor(Math.random() * array.length)]
+    generateRandomString :() => {
+        return Math.random().toString(20).toUpperCase().substr(4, 6)
     }
 }

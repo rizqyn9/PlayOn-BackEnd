@@ -13,7 +13,9 @@ const wss = new WebSocket.Server({
         console.log("Web Socket is Running 3001");
 })
 const {GeneratedRoomID} = require('./server/utils/util')
+const {init, log} = require('./server/utils/logger')
 
+init("Peplayon")
 // ! DATABASE
 mongoose.connect('mongodb://localhost:27017/peplayon', {useNewUrlParser:true, useUnifiedTopology:true})
 .then(()=> console.log("Connected to Database"))
@@ -75,8 +77,14 @@ app.use('/test', (reqr,res,next) => {
 })
 
 // ! Game API
-
 app.use('/api', require('./server/controller/api'))
+app.use('/matchmaker', require('./server/controller/matchmaker-controller'))
+app.use('/updateUser', require('./server/controller/updatedata-controller'))
+
+app.use('/' , (req,res) => {
+    res.status(200).json({data : "Success"})
+})
+
 
 // ! LISTENER
 server.listen(PORT, () => {

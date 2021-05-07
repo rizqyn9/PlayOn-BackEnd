@@ -35,6 +35,7 @@ router.post('/signin' , async(req,res) => {
             console.log("Wrong Pass");
             return res.redirect('/')
         }
+        console.log("User sign in");
         res.redirect('stat')
 
     } catch (error) {

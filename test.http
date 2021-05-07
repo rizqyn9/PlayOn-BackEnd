@@ -1,0 +1,48 @@
+GET http://localhost:3000
+
+###
+GET  http://localhost:3000
+
+### Matchmaker
+GET  http://localhost:3000/matchmaker
+
+### False
+GET  http://localhost:3000/matchmaker/join/roomID/playerID
+
+### True
+GET  http://localhost:3000/matchmaker/join/F9815J/playerID
+
+### 
+GET  http://localhost:3000/matchmaker/createContainer
+
+###
+GET  http://localhost:3000/matchmaker/getAllRooms
+
+###
+GET  http://localhost:3000/matchmaker/roomReady
+
+###
+GET  http://localhost:3000/matchmaker/createPublic
+
+###
+GET  http://localhost:3000/matchmaker/createPrivate
+
+###
+GET  http://localhost:3000/matchmaker/find
+
+### ERROR
+GET  http://localhost:3000/matchmaker/restartServer
+
+###
+GET  http://localhost:3000/updateUser/
+
+###
+GET  http://localhost:3000/updateUser/data2
+
+###
+GET  http://localhost:3000/updateUser/
+
+###
+GET  http://localhost:3000/getAllRooms/
+
+
