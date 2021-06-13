@@ -7,7 +7,7 @@ const {DockerStartContainer} = require('../docker-controller/docker')
 
 const CheckRoomReady = async() => {
     let roomTotal = await redis.llen("RoomReady")
-    while(roomTotal < 4) {
+    while(roomTotal < 2) {
         await CreateContainer()
         roomTotal = await redis.llen("RoomReady")
     }

@@ -86,12 +86,15 @@ router.get('/createPrivate' , async(req,res) => {
 } )
 
 //! Player Join
-router.get('/join/:roomID/:playerID' , async(req,res) => {
+router.get('/join/:roomID' , async(req,res) => {
+    let {roomID, playerID} = req.params
+    roomID = roomID.toUpperCase();
     try {
-        const {roomID, playerID} = req.params
-        console.log(roomID);
+        log.bg_warn(`Join Room PlayerID : ${playerID} Room : ${roomID}`)
         await CheckRoom(roomID).then(isAvail => {
+            console.log(isAvail);
             if(!isAvail){
+                log.bg_success("room not found")
                 return res.status(200).json({
                     data:false,
                     msg : "Room ID false"
@@ -100,10 +103,12 @@ router.get('/join/:roomID/:playerID' , async(req,res) => {
             return
         })
         const result = await PlayerJoin(roomID,playerID)
+        log.bg_success("room success load")
         res.status(200).json({
             ...result,
         })
     } catch (error) {
+        log.bg_err("room not found")
         res.status(400).json({error : `Failed to join ${roomID}`})
     }
 } )
